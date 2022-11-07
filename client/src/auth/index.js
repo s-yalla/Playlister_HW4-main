@@ -10,7 +10,11 @@ export const AuthActionType = {
     GET_LOGGED_IN: "GET_LOGGED_IN",
     LOGIN_USER: "LOGIN_USER",
     LOGOUT_USER: "LOGOUT_USER",
-    REGISTER_USER: "REGISTER_USER"
+    REGISTER_USER: "REGISTER_USER",
+    LOGIN_ERROR: "LOGIN_ERROR",
+    LOGOUT_ERROR: "LOGOUT_ERROR",
+    REGISTER_ERROR: "REGISTER_ERROR"
+
 }
 
 function AuthContextProvider(props) {
@@ -78,7 +82,7 @@ function AuthContextProvider(props) {
                     user: response.data.user
                 }
             })
-            history.push("/login");
+            history.push("/");
         }
     }
 
