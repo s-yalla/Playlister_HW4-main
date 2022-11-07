@@ -10,9 +10,9 @@
   --swatch-primary: #e6e6e6;
   --swatch-complement: #e1e4cb;
   --swatch-contrast: #111111;
-  --swatch-accent: #669966;
-  --swatch-status: #123456;
-  --my-font-family: "Robaaaoto";
+  --swatch-accent: #ff0000;
+  --swatch-status: #ffffff;
+  --my-font-family: "Times New Roman";
   --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
 }
 
@@ -22,7 +22,7 @@ body {
 
 #root {
   background-color: var(--swatch-primary);
-  font-family: "Lexend Exa";
+  font-family: "Copperplate";
   position: absolute;
   width: 80%;
   left: 10%;
@@ -141,6 +141,11 @@ body {
 
 #add-list-button {
   float: left;
+  pointer-events: all;
+}
+#home-screen-title{
+  font-size: 40pt;
+  color: black;
 }
 
 #list-selector-list {
@@ -291,7 +296,7 @@ input {
   position: relative;
   max-width: 800px;
   max-height: 80vh;
-  background: var(--swatch-complement);
+  background: var(--swatch-status);
   overflow: auto;
   cursor: default;
   border-width: 5px;
@@ -301,6 +306,12 @@ input {
 
 .modal-dialog > * {
   padding: 1rem;
+}
+
+.error_modal {
+  display: flex;
+  cursor: default;
+  justify-content: center;
 }
 
 .modal-header,
@@ -330,7 +341,9 @@ input {
 }
 
 .dialog-header {
-  font-size: 24pt;
+  font-size: 27pt;
+  color:#ff0000;
+  font-family: "Copperplate";
 }
 
 #close-modal-button {
@@ -339,6 +352,8 @@ input {
 
 #confirm-cancel-container {
   text-align: center;
+  background-color: #ff0000;
+  background-color: #e6e6e6;
 }
 
 /* ANIMATIONS

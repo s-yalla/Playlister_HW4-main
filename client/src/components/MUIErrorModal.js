@@ -31,6 +31,7 @@ export default function MUIErrorModal() {
 
     return (
         <Modal open={auth.error != null}>
+            
             <Alert sx={style} severity="error">
                 <div className="modal-dialog">
                 <header className="dialog-header">
@@ -38,7 +39,7 @@ export default function MUIErrorModal() {
                         empty
                     }
                 </header>
-                <div id="confirm-cancel-error">
+                <div id="error_modal">
                     <Button
                         id="button"
                         className="modal-button"
@@ -50,3 +51,4 @@ export default function MUIErrorModal() {
         </Modal>
     )
 }
+//error_modal
