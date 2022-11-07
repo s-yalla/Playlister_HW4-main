@@ -20,6 +20,7 @@ export const AuthActionType = {
 function AuthContextProvider(props) {
     const [auth, setAuth] = useState({
         user: null,
+        error: null,
         loggedIn: false
     });
     const history = useHistory();
@@ -55,6 +56,13 @@ function AuthContextProvider(props) {
                     loggedIn: true
                 })
             }
+            case AuthActionType.LOGIN_ERROR: {
+                return setAuth({
+                    user: auth.user,
+                    loggedIn: auth.loggedIn,
+                    error:payload.errorMessage
+                })
+            }
             default:
                 return auth;
         }
@@ -72,10 +80,13 @@ function AuthContextProvider(props) {
             });
         }
     }
+/// registerd user begin
 
     auth.registerUser = async function(firstName, lastName, email, password, passwordVerify) {
-        const response = await api.registerUser(firstName, lastName, email, password, passwordVerify);      
-        if (response.status === 200) {
+    try
+        {
+            const response = await api.registerUser(firstName, lastName, email, password, passwordVerify);      
+            if (response.status === 200) {
             authReducer({
                 type: AuthActionType.REGISTER_USER,
                 payload: {
@@ -84,18 +95,42 @@ function AuthContextProvider(props) {
             })
             history.push("/");
         }
+    } 
+    catch(error) 
+        {
+        authReducer({
+            type: AuthActionType.LOGIN_ERROR,
+            payload: {
+                errorMessage: error.response.data.errorMessage
+            }
+        })
+        }
     }
+    
+/// registerd user end
+
+/// login user begin
 
     auth.loginUser = async function(email, password) {
-        const response = await api.loginUser(email, password);
-        if (response.status === 200) {
+        try
+        {
+            const response = await api.loginUser(email, password);
+            if (response.status === 200) {
+                authReducer({
+                    type: AuthActionType.LOGIN_USER,
+                    payload: {
+                        user: response.data.user
+                    }
+                })
+                history.push("/");
+            }}
+        catch(error){
             authReducer({
-                type: AuthActionType.LOGIN_USER,
+                type: AuthActionType.LOGIN_ERROR,
                 payload: {
-                    user: response.data.user
+                    errorMessage: error.response.data.errorMessage
                 }
             })
-            history.push("/");
         }
     }
 
