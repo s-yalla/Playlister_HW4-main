@@ -27,7 +27,7 @@ export default function MUIDeleteModal() {
         store.deleteMarkedList();
     }
     function handleCloseModal(event) {
-        store.unmarkListForDeletion();
+        store.hideModals();
     }
 
     return (

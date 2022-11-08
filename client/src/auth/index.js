@@ -144,6 +144,13 @@ function AuthContextProvider(props) {
             history.push("/");
         }
     }
+    auth.closeErrorModal = function() {
+        return setAuth({
+            user: auth.user,
+            loggedIn: auth.loggedIn,
+            error: null
+        });
+    }
 
     auth.getUserInitials = function() {
         let initials = "";
