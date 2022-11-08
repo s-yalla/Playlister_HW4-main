@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { GlobalStoreContext } from '../store'
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close'
 
 function SongCard(props) {
     const { store } = useContext(GlobalStoreContext);
@@ -64,13 +66,16 @@ function SongCard(props) {
                 href={"https://www.youtube.com/watch?v=" + song.youTubeId}>
                 {song.title} by {song.artist}
             </a>
-            <input
+            <IconButton
+                aria-label="close"
                 type="button"
                 id={"remove-song-" + index}
                 className="list-card-button"
                 value={"\u2715"}
-                onClick={handleRemoveSong}
-            />
+                onClick={handleRemoveSong}>
+                <CloseIcon fontSize="inherit"/>
+
+                </IconButton>
         </div>
     );
 }
