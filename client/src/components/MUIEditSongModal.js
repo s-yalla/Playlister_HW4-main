@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 
 const style = {
-    color: 'black',
+    color: 'white',
 };
 
 export default function MUIEditSongModal() {
@@ -43,7 +43,7 @@ export default function MUIEditSongModal() {
     return (
         <Dialog
             open={store.currentModal === "EDIT_SONG"}
-            sx={{color: 'black' }}
+            sx={{color: 'white' }}
         >
                 <DialogTitle><b>Edit Song</b></DialogTitle>
                 <DialogContent
